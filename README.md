@@ -1,3 +1,9 @@
+# petems-module-skeleton
+
+This is a fork of Gareth R's Puppet Skeleton, tweaked to my requirements.
+
+# Original documentation with a few edits:
+
 Puppet modules often take on the same file system structure. The
 built-in puppet-module tool makes starting modules easy, but the build
 in skeleton module is very simple. This skeleton is very opinionated.
@@ -7,7 +13,7 @@ keep track of releases and structure your modules according to strong
 conventions.
 
 [![Build
-Status](https://travis-ci.org/garethr/puppet-module-skeleton.svg?branch=master)](https://travis-ci.org/garethr/puppet-module-skeleton)
+Status](https://travis-ci.org/petems/petems-puppet-module-skeleton.svg?branch=master)](https://travis-ci.org/petems/petems-puppet-module-skeleton)
 
 ## Installation
 
@@ -18,18 +24,18 @@ for use with the puppet module tool.
 
 ## Manual install
 
-As we don't want to have our .git files and this README in our skeleton, we export it like this : 
+As we don't want to have our .git files and this README in our skeleton, we export it like this :
 
 ### for puppet 3.x:
 
-    git clone https://github.com/garethr/puppet-module-skeleton
-    cd puppet-module-skeleton
+    git clone https://github.com/petems/petems-puppet-module-skeleton
+    cd petems-puppet-module-skeleton
     find skeleton -type f | git checkout-index --stdin --force --prefix="$HOME/.puppet/var/puppet-module/" --
 
 ### for puppet 4.x
 
-    git clone https://github.com/garethr/puppet-module-skeleton
-    cd puppet-module-skeleton
+    git clone https://github.com/petems/petems-puppet-module-skeleton
+    cd petems-puppet-module-skeleton
     find skeleton -type f | git checkout-index --stdin --force --prefix="$HOME/.puppetlabs/opt/puppet/cache/puppet-module/" --
 
 ## the install.sh

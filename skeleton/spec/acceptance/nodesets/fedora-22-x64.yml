@@ -1,9 +1,9 @@
 HOSTS:
-  centos-72-x64:
+  fedora-22-x64:
     roles:
       - master
-    platform: el-7-x86_64
-    box: puppetlabs/centos-7.2-64-nocm
+    platform: fedora-22-x86_64
+    box: box-cutter/fedora22
     hypervisor: vagrant
 CONFIG:
   type: foss

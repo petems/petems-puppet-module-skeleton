@@ -1,23 +1,32 @@
 ---
-language: ruby
-before_script:
-  - ./install.sh
-  - puppet module generate user-module --skip-interview
 sudo: false
-env:
-  - PUPPET_GEM_VERSION="~> 3.7.0"
-  - PUPPET_GEM_VERSION="~> 3.8.0"
-  - PUPPET_GEM_VERSION="~> 4.1.0"
-  - PUPPET_GEM_VERSION="~> 4.2.0"
-rvm:
-  - 1.9.3
-  - 2.0
-  - 2.1
-  - 2.2
-script: ./test.sh
+language: ruby
+bundler_args: --without system_tests
+script: "bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'"
 matrix:
-  exclude:
-    - rvm: 2.2
-      env: PUPPET_GEM_VERSION="~> 3.7.0"
-    - rvm: 2.2
-      env: PUPPET_GEM_VERSION="~> 3.8.0"
+  fast_finish: true
+  include:
+  - rvm: 1.9.3
+    env: PUPPET_GEM_VERSION="~> 3.0" STRICT_VARIABLES="yes" ORDERING="random"
+  - rvm: 2.0.0
+    env: PUPPET_GEM_VERSION="~> 3.0" STRICT_VARIABLES="yes" ORDERING="random"
+  - rvm: 2.1.6
+    env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes" ORDERING="random"
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_INSTALL_VERSION="1.5.2" PUPPET_INSTALL_TYPE=agent BEAKER_set="centos-7-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_INSTALL_VERSION="1.5.2" PUPPET_INSTALL_TYPE=agent BEAKER_set="fedora-22-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
+  - rvm: '2.1'
+    sudo: required
+    services: docker
+    env: PUPPET_INSTALL_VERSION="1.5.2" PUPPET_INSTALL_TYPE=agent BEAKER_set="ubuntu-1604-docker"
+    script: bundle exec rake acceptance
+    bundler_args: --without development
