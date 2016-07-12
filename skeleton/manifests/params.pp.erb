@@ -17,4 +17,11 @@ class <%= metadata.name %>::params {
       fail("${::operatingsystem} not supported")
     }
   }
+
+  # Defaults for all Operating Systems
+  $manage_package   = true
+  $manage_repo      = true
+  $manage_service   = true
+  $package_version  = 'installed'
+  $service_ensure   = 'running'
 }
