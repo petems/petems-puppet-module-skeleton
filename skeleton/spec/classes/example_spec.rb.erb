@@ -35,7 +35,7 @@ describe '<%= metadata.name %>' do
       end
 
       context 'shows failure' do
-        it { expect { is_expected.to create_class('<%= metadata.name %>') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+        it { expect { is_expected.to create_class('<%= metadata.name %>') }.to raise_error(Puppet::Error, /Solaris not supported/) }
       end
     end
   end
