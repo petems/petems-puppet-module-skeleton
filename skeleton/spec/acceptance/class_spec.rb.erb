@@ -18,7 +18,6 @@ describe '<%= metadata.name %> class' do
     end
 
     describe service('<%= metadata.name %>') do
-      it { is_expected.to be_enabled }
       it { is_expected.to be_running }
     end
   end

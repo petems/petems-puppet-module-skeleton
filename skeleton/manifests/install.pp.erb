@@ -4,7 +4,9 @@
 #
 class <%= metadata.name %>::install {
 
-  package { $::<%= metadata.name %>::package_name:
-    ensure => present,
+  if $::<%= metadata.name %>::manage_package {
+    package { $::<%= metadata.name %>::package_name:
+      ensure => $::<%= metadata.name %>::package_version,
+    }
   }
 }
