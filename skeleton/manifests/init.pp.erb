@@ -12,8 +12,6 @@
 #
 # @author Peter Souter
 #
-# @param logintitle [String] Title to show on login screen for <%= metadata.name %>
-#
 # @param manage_package [Boolean] Whether to manage the <%= metadata.name %> package
 #
 # @param manage_repo [Boolean] Whether to manage the package repositroy
@@ -27,8 +25,6 @@
 # @param service_name [String] Name of the <%= metadata.name %> service to manage
 #
 class <%= metadata.name %> (
-  $allowunencrypted = $::<%= metadata.name %>::params::allowunencrypted,
-  $logintitle       = $::<%= metadata.name %>::params::logintitle,
   $manage_package   = $::<%= metadata.name %>::params::manage_package,
   $manage_repo      = $::<%= metadata.name %>::params::manage_repo,
   $maxstartups      = $::<%= metadata.name %>::params::maxstartups,
@@ -37,7 +33,6 @@ class <%= metadata.name %> (
   $port             = $::<%= metadata.name %>::params::port,
   $service_ensure   = $::<%= metadata.name %>::params::service_ensure,
   $service_name     = $::<%= metadata.name %>::params::service_name,
-  $yum_preview_repo = $::<%= metadata.name %>::params::yum_preview_repo,
 ) inherits ::<%= metadata.name %>::params {
 
   validate_bool($manage_package)
